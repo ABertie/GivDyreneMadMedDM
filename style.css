@@ -1,0 +1,51 @@
+@import url("./assets/css/animalCage.css");
+
+:root {
+    --brand-color: #FDBA74;
+    --dark-color: #27272A;
+    --mid-color: #FED7AA;
+    --light-color: #F8FAFC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(./assets/img/bg.jpg);
+    background-size: 50% auto;
+
+    height: 100vh;
+}
+
+img,
+video,
+svg {
+    max-width: 100%;
+}
+
+.point {
+    position: fixed;
+    inset: 0 auto auto 0;
+    z-index: 1;
+
+    padding: .5em;
+    margin: .5em;
+    background-color: var(--brand-color);
+    color: var(--dark-color);
+}
+
+.scene {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+}
+
+.create__animal {
+    display: none;
+
+    position: absolute;
+}
