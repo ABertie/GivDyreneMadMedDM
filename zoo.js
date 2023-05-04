@@ -57,7 +57,7 @@ function creatCage(animal, likeFood) {
 
     createCage.addEventListener("dragover", cancelDefault);
     createCage.addEventListener("drop", dropMad);
-
+    
     SCENE.append(cageHTML)
     CREATE__FORM.style.display = "none"
 }
