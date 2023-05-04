@@ -1,6 +1,7 @@
 const SCENE = document.querySelector(".scene")
 const CREATE__FORM = document.querySelector("#create__animal")
 const SELECTED__ANIMAL = document.querySelector("#selected__animal")
+const FOOD__CONTAINER = document.querySelector(".food__container")
 const AUDIO = document.createElement("audio")
 document.body.append(AUDIO)
 
@@ -13,33 +14,45 @@ SCENE.addEventListener("click", function (event) {
         leftCord = event.clientX / window.innerWidth * 100 + "%"
 
         CREATE__FORM.style.display = "block"
-        CREATE__FORM.style.top = topCord /* - 1.5 */
-        CREATE__FORM.style.left = leftCord /* - 5 */
+        CREATE__FORM.style.top = topCord 
+        CREATE__FORM.style.left = leftCord 
     }
 })
 
-CREATE__FORM.addEventListener("change", function () {
-    // FOOD
-    let animalSound
-    if (SELECTED__ANIMAL.value == "🦍") animalSound = "./asset/sound/gorilla.mp3"
-    else if (SELECTED__ANIMAL.value == "🐪") animalSound = "./asset/sound/camel.mp3"
-    else if (SELECTED__ANIMAL.value == "🐅") animalSound = "./asset/sound/tiger.mp3"
-    else if (SELECTED__ANIMAL.value == "🐸") animalSound = "./asset/sound/frog.mp3"
-    else if (SELECTED__ANIMAL.value == "🦁") animalSound = "./asset/sound/lion.mp3"
-    else if (SELECTED__ANIMAL.value == "🐒") animalSound = "./asset/sound/chimp.mp3"
+SELECTED__ANIMAL.addEventListener("change", function () {
+    let animalFood
+    if (SELECTED__ANIMAL.value == "./assets/img/trex-pic.png") {
+        animalFood = "meat"
+    } else if (SELECTED__ANIMAL.value == "./assets/img/pterosaurs-pic.png") {
+        animalFood = "frugt,meat"
+    }
+    else if (SELECTED__ANIMAL.value == "./assets/img/triceratops-pic.png") {
+        animalFood = "plant"
+    }
 
-    AUDIO.src = animalSound
-    AUDIO.play()
+    creatCage(SELECTED__ANIMAL.value, animalFood)
 
-    creatCage(SELECTED__ANIMAL.value, animalSound)
+    if (SCENE.childNodes.length > 0) FOOD__CONTAINER.style.display = "block"
 })
 
-function creatCage(animal, sound) {
-    let cageHTML = `<div class="cage" data-sound="${sound}" style="
-        top: ${topCord}; left: ${leftCord}">
-    <p class="emoji">${animal}</p>
-    <img class="cage__img" src="./assets/img/bur.png" alt="">
-    </div>`
-    SCENE.innerHTML += cageHTML
+function creatCage(animal, likeFood) {
+    const cageHTML = document.createElement("div")
+    const createAnimal = document.createElement("img")
+    const createCage = document.createElement("img")
+    cageHTML.classList.add('cage')
+    cageHTML.dataset.food = likeFood
+    cageHTML.style.top = topCord
+    cageHTML.style.left = leftCord
+    createAnimal.src = animal
+    createAnimal.classList.add('emoji')
+    createCage.src = "./assets/img/bur.png"
+    createCage.classList.add('cage__img')
+    cageHTML.append(createAnimal)
+    cageHTML.append(createCage)
+
+    cageHTML.addEventListener("dragover", cancelDefault);
+    cageHTML.addEventListener("drop", dropMad);
+
+    SCENE.append(cageHTML)
     CREATE__FORM.style.display = "none"
 }

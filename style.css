@@ -1,4 +1,5 @@
 @import url("./assets/css/animalCage.css");
+@import url("./assets/css/food.css");
 
 :root {
     --brand-color: #FDBA74;
@@ -14,8 +15,9 @@
 }
 
 body {
-    background-image: url(./assets/img/bg.jpg);
-    background-size: 50% auto;
+    background-image: url(./assets/img/background.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
 
     height: 100vh;
 }

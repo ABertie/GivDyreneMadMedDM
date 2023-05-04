@@ -11,23 +11,32 @@
     
     <!-- script -->
     <script src="zoo.js" defer></script>
+    <script src="food.js" defer></script>
 </head>
 <body>
     <div class="point">point: <span id="point"></span></div>
-
+    
     <div class="scene"></div>
-
+    
     <form action="" class="create__animal" id="create__animal">
         <select name="selected__animal" id="selected__animal">
             <option value="0" disabled selected>Vælg et dyr</option>
-            <option value="🦍">🦍</option>
-            <option value="🐪">🐪</option>
-            <option value="🐅">🐅</option>
-            <option value="🐸">🐸</option>
-            <option value="🦁">🦁</option>
-            <option value="🐒">🐒</option>
+            <option value="./assets/img/trex-pic.png">T-Rex</option>
+            <option value="./assets/img/pterosaurs-pic.png">Pterosaurs</option>
+            <option value="./assets/img/triceratops-pic.png">Triceratops</option>
         </select>
     </form>
-<div>virker github</div>
+    
+    <div class="food__container">
+        <ul>
+            <li class="food" id="kyllinge_ben" draggable="true" data-food="meat">Kyllinge ben</li>
+            <li class="food" id="menneske_kød" draggable="true" data-food="meat">Menneske kød</li>
+            <li class="food" id="fisk" draggable="true" data-food="meat">Fisk</li>
+            <li class="food" id="blade" draggable="true" data-food="plant">Blade</li>
+            <li class="food" id="busk" draggable="true" data-food="plant">Busk</li>
+            <li class="food" id="frugt" draggable="true" data-food="fruit">Frugt</li>
+        </ul>
+    </div>
+    
 </body>
 </html>
