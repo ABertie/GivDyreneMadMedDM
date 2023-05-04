@@ -11,5 +11,10 @@
 }
 
 .food {
-    list-style-type: none;  
+    list-style-type: none; 
+}
+
+.food img {
+    width: auto;
+    height: 3em; 
 }

@@ -24,11 +24,16 @@ SELECTED__ANIMAL.addEventListener("change", function () {
     if (SELECTED__ANIMAL.value == "./assets/img/trex-pic.png") {
         animalFood = "meat"
     } else if (SELECTED__ANIMAL.value == "./assets/img/pterosaurs-pic.png") {
-        animalFood = "frugt,meat"
-    }
-    else if (SELECTED__ANIMAL.value == "./assets/img/triceratops-pic.png") {
+        animalFood = "meat"
+    } else if (SELECTED__ANIMAL.value == "./assets/img/triceratops-pic.png") {
         animalFood = "plant"
-    }
+    } else if (SELECTED__ANIMAL.value == "./assets/img/raptor-pic.png") {
+        animalFood = "meat"
+    } else if (SELECTED__ANIMAL.value == "./assets/img/sauropods-pic.png") {
+        animalFood = "plant"
+    } else if (SELECTED__ANIMAL.value == "./assets/img/stegosaurus-pic.png") {
+        animalFood = "frugt"
+    } 
 
     creatCage(SELECTED__ANIMAL.value, animalFood)
 
@@ -50,9 +55,13 @@ function creatCage(animal, likeFood) {
     cageHTML.append(createAnimal)
     cageHTML.append(createCage)
 
-    cageHTML.addEventListener("dragover", cancelDefault);
-    cageHTML.addEventListener("drop", dropMad);
+    createCage.addEventListener("dragover", cancelDefault);
+    createCage.addEventListener("drop", dropMad);
 
     SCENE.append(cageHTML)
     CREATE__FORM.style.display = "none"
 }
+
+// document.addEventListener('click', function(e) {
+//     console.log(e.target);
+// })

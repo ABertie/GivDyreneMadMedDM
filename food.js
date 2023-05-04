@@ -11,7 +11,7 @@ dragFoodBox.forEach(function(element){
 
 //FUNKTIONER
 function startDrag (event){ 
-    event.dataTransfer.setData("foodId", this.id)
+    // event.dataTransfer.setData("foodId", this.id) // Skal kun bruges hvis vi fjerner maden
     event.dataTransfer.setData("foodName", this.dataset.food)
 }
 
@@ -21,21 +21,15 @@ function cancelDefault(event){
 }
 
 function dropMad(event){
-    // let madId = event.dataTransfer.getData("foodId"); 
-    // Skal kun bruges hvis vi fjerner maden 
+    // let madId = event.dataTransfer.getData("foodId"); // Skal kun bruges hvis vi fjerner maden 
     let madType = event.dataTransfer.getData("foodName").parentElement;
     let iLike = this.dataset.food; // kalder dyrets dataset -> iLike
     console.log("yes");
 
     if (iLike.include(madType)) {
-        point = point + 100
-    //    pointBox.innerHTML = parseInt(pointBox.innerHTML) + 100;
-        // Alberte's point system   
-       } 
-    
-     else{
+        point = point + 100  
+    } else{
         point = point - 100;
-        // foodBox.removeChild(document.querySelector("#" + madId));
     } 
     pointBox.innerHTML = point  
     
