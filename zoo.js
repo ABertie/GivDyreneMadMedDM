@@ -55,9 +55,22 @@ function creatCage(animal, likeFood) {
     cageHTML.append(createAnimal)
     cageHTML.append(createCage)
 
-    createCage.addEventListener("dragover", cancelDefault);
+    // createCage.addEventListener("dragover", (event) => {
+    //     console.log("dragover");
+    //     event.preventDefault();
+    //     console.log("dragover");
+    // });
+    createCage.addEventListener("dragover", dragover);
+
+    // createCage.addEventListener("drop", (event) => {
+    //     console.log("drop");
+    //     event.preventDefault();
+    //     console.log("drop");
+    // });
+
     createCage.addEventListener("drop", dropMad);
-    
+
+
     SCENE.append(cageHTML)
     CREATE__FORM.style.display = "none"
 }

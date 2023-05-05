@@ -5,7 +5,7 @@ const dragFoodBox = FOOD__CONTAINER.querySelectorAll(".food") //selected foods
 var point = 0
 
 //EVENTS på elementerne
-dragFoodBox.forEach(function(element){
+dragFoodBox.forEach(function(element){    
     element.addEventListener("dragstart", startDrag);
 })
 
@@ -14,13 +14,19 @@ function startDrag (event){
     // event.dataTransfer.setData("foodId", this.id) // Skal kun bruges hvis vi fjerner maden
     event.dataTransfer.setData("foodName", this.dataset.food)
 }
+ 
+var count=0;
 
-function cancelDefault(event){
-    event.preventDefault();
+function dragover(event){
+    event.preventDefault();    
+    console.log("dragover" + count++);
     //kan bruges til at "aflyse" eventet
 }
 
 function dropMad(event){
+    event.preventDefault();
+    console.log("dropMad");
+    
     // let madId = event.dataTransfer.getData("foodId"); // Skal kun bruges hvis vi fjerner maden 
     let madType = event.dataTransfer.getData("foodName").parentElement;
     let iLike = this.dataset.food; // kalder dyrets dataset -> iLike
@@ -31,8 +37,8 @@ function dropMad(event){
     } else{
         point = point - 100;
     } 
-    pointBox.innerHTML = point  
-    
+    pointBox.innerHTML = point
 }
+
 pointBox.innerHTML = point
        
